@@ -8,7 +8,7 @@ import { toast } from '../hooks/use-toast';
 
 // --- Yapılandırma ---
 // Canlıda backend sunucunuzun adresi, geliştirme ortamında localhost.
-const SIGNALING_SERVER_URL = process.env.REACT_APP_SIGNALING_SERVER_URL || 'https://localhost:3001';
+const SIGNALING_SERVER_URL = process.env.REACT_APP_SIGNALING_SERVER_URL || 'http://localhost:3001';
 
 
 // STUN sunucuları, farklı ağlardaki kullanıcıların birbirini bulmasına yardımcı olur.
@@ -67,7 +67,7 @@ const VideoChat = () => {
   useEffect(() => {
     initializeCamera();
 
-    const newSocket = io(SIGNALING_SERVER_URL, { secure: true });
+    const newSocket = io(SIGNALING_SERVER_URL);
     setSocket(newSocket);
 
     newSocket.on('waiting', () => setIsSearching(true));

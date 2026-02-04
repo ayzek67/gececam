@@ -11,10 +11,12 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     // Canlıda sadece kendi sitenize izin verin.
-    origin: process.env.FRONTEND_URL || "https://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 });
+
+
 
 let waitingUsers = []; // Bir partner bekleyen kullanıcıların olduğu kuyruk
 
